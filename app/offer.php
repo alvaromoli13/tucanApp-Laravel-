@@ -11,4 +11,8 @@ class offer extends Model
     protected $fillable = [
         'id', 'name', 'description', 'start_date', 'finish_date', 'assessment', 'enterprise_id',
     ];
+
+    public function empresa(){
+        return $this->belongsTo(enterprise::class, 'enterprise_id');
+    }
 }
