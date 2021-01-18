@@ -15,6 +15,7 @@ class CreateIWillGosTable extends Migration
     {
         Schema::create('i_will_gos', function (Blueprint $table) {
             $table->increments('id');
+            $table->engine = 'InnoDB';
             $table->timestamps();
         });
     }

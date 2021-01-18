@@ -14,7 +14,14 @@ class CreateEnterprisesTable extends Migration
     public function up()
     {
         Schema::create('enterprises', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->string('name');
+            $table->string('address');
+            $table->string('type');
+            $table->string('logo');
+            $table->unsignedInteger('own');
+            $table->foreing('own')->references('id')->on('users');
             $table->timestamps();
         });
     }
