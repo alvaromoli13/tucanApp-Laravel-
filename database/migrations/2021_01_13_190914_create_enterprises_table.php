@@ -21,7 +21,7 @@ class CreateEnterprisesTable extends Migration
             $table->string('type');
             $table->string('logo');
             $table->unsignedInteger('own');
-            $table->foreing('own')->references('id')->on('users');
+            $table->foreign('own')->references('id')->on('users');
             $table->timestamps();
         });
     }

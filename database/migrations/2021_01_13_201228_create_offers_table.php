@@ -22,7 +22,7 @@ class CreateOffersTable extends Migration
             $table->date('finish_date');
             $table->integer('assessment');
             $table->unsignedInteger('entreprise_id');
-            $table->foreing('entreprise_id')->references('id')->on('enterprises');
+            $table->foreign('entreprise_id')->references('id')->on('enterprises');
             $table->timestamps();
         });
     }
