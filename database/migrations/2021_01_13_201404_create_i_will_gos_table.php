@@ -16,6 +16,10 @@ class CreateIWillGosTable extends Migration
         Schema::create('i_will_gos', function (Blueprint $table) {
             $table->increments('id');
             $table->engine = 'InnoDB';
+            $table->unsignedInteger('offer_id');
+            $table->foreign('offer_id')->references('id')->on('offers');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('Users');
             $table->timestamps();
         });
     }

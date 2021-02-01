@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 
+Route::apiResource('users', 'UserController');
 Route::apiResource('entreprises', 'EnterpriseController');
 Route::apiResource('iWillGos', 'IWillGoController');
 // Route::apiResource('offers', 'OfferController');

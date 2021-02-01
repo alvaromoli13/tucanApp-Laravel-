@@ -23,6 +23,8 @@ class CreateOffersTable extends Migration
             $table->integer('assessment');
             $table->unsignedInteger('entreprise_id');
             $table->foreign('entreprise_id')->references('id')->on('enterprises');
+            $table->boolean('music_direct')->default(false);
+            $table->boolean('sport_direct')->default(false);
             $table->timestamps();
         });
     }
