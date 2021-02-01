@@ -17,14 +17,15 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 
-Route::apiResource('users', 'UserController');
-Route::apiResource('entreprises', 'EnterpriseController');
+// Route::apiResource('users', 'UserController');
+// Route::apiResource('entreprises', 'EnterpriseController');
 Route::apiResource('iWillGos', 'IWillGoController');
 // Route::apiResource('offers', 'OfferController');
 
 Route::post('api/register', 'API\RegisterController@register');
 Route::post('api/login', 'API\RegisterController@login');
 
-Route::middleware('vip:api')->group( function () {
+Route::middleware('auth:api', )->group( function () {
     Route::resource('offers', 'OfferController');
+    Route::resource('enterprises', 'EnterpriseController');
     });

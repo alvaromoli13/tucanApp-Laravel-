@@ -28,7 +28,19 @@ class OfferController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required| max:100',
+            'description' => 'required| max:100',
+            'assessment' => 'required| max:100',
+            'enterprise_id' => 'required| max:100',
+            'start_date' => 'required| max:100',
+            'finish_date' => 'required| max:100',
+        ]);
+
+        offer::insert(['name'=>request()->name, 'description'=>request()->description, 'assessment'=>request()->assessment, 
+        'enterprise_id'=>request()->enterprise_id, 'start_date'=>request()->start_date, 'finish_date'=>request()->finish_date]);
+
+        return response()->json(['Oferta' => 'Dato guardado'], 200);
     }
 
     /**
@@ -37,9 +49,11 @@ class OfferController extends Controller
      * @param  \App\offer  $offer
      * @return \Illuminate\Http\Response
      */
-    public function show(offer $offer)
+    public function show($id)
     {
-        //
+        $offer = offer::findOrFail($id);
+
+        return response()->json(['Oferta' => $offer->toArray()]);
     }
 
     
@@ -51,9 +65,12 @@ class OfferController extends Controller
      * @param  \App\offer  $offer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, offer $offer)
+    public function update(Request $request, $id)
     {
-        //
+        $datosOferta = request()->except(['_token', '_method']);
+        offer::where('id','=',$id)->update($datosOferta);
+
+        return response()->json(['Oferta' => 'Dato guardado'], 200);
     }
 
     /**

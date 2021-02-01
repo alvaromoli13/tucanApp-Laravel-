@@ -15,7 +15,7 @@ class VipMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->vip === true)
+        if (auth()->check())
             return $next($request);
         return redirect('/');
     }

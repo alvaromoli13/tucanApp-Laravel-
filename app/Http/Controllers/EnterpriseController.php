@@ -14,7 +14,8 @@ class EnterpriseController extends Controller
      */
     public function index()
     {
-        //
+        $enterprise = enterprise::all();
+        return response()->json(['Empresas' => $enterprise->toArray()]);
     }
 
 
@@ -35,9 +36,11 @@ class EnterpriseController extends Controller
      * @param  \App\enterprise  $enterprise
      * @return \Illuminate\Http\Response
      */
-    public function show(enterprise $enterprise)
+    public function show($id)
     {
-        //
+        $enterprise = enterprise::findOrFail($id);
+
+        return response()->json(['Empresa' => $enterprise->toArray()]);
     }
 
 
@@ -48,9 +51,12 @@ class EnterpriseController extends Controller
      * @param  \App\enterprise  $enterprise
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, enterprise $enterprise)
+    public function update(Request $request, $id)
     {
-        //
+        $datosEmpresa = request()->except(['_token', '_method']);
+        enterprise::where('id','=',$id)->update($datosEmpresa);
+
+        return response()->json(['Empresa' => 'Dato guardado'], 200);
     }
 
     /**
