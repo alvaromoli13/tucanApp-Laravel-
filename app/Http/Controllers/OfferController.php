@@ -14,9 +14,11 @@ class OfferController extends Controller
      */
     public function index()
     {
-        //
+        $offers = offer::all();
+        return response()->json(['Ofertas' => $offers->toArray()]);  
     }
 
+    // , $this->successStatus
 
     /**
      * Store a newly created resource in storage.

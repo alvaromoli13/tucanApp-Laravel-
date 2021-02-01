@@ -18,8 +18,12 @@ use Illuminate\Http\Request;
 });*/
 
 Route::apiResource('entreprises', 'EnterpriseController');
-Route::apiResource('offers', 'OfferController');
 Route::apiResource('iWillGos', 'IWillGoController');
+// Route::apiResource('offers', 'OfferController');
 
 Route::post('api/register', 'API\RegisterController@register');
 Route::post('api/login', 'API\RegisterController@login');
+
+Route::middleware('vip:api')->group( function () {
+    Route::resource('offers', 'OfferController');
+    });
