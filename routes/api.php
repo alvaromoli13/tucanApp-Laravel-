@@ -21,3 +21,6 @@ Route::apiResource('users', 'UserController');
 Route::apiResource('entreprises', 'EnterpriseController');
 Route::apiResource('offers', 'OfferController');
 Route::apiResource('iWillGos', 'IWillGoController');
+
+Route::post('api/register', 'API\RegisterController@register');
+Route::post('api/login', 'API\RegisterController@login');
