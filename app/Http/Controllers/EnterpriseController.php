@@ -79,7 +79,7 @@ class EnterpriseController extends Controller
     public function destroy($id)
     {
         $empresa = enterprise::where('id','=',$id);
-        enterprise::destroy($empresa);
+        $empresa->delete();
 
         return response()->json(['Empresa' => 'Empresa Eliminada'], 200);
     }

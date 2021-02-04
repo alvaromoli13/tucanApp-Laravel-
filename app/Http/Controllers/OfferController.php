@@ -82,7 +82,8 @@ class OfferController extends Controller
     public function destroy($id)
     {
         $oferta = offer::where('id',$id);
-        offer::destroy($oferta);
+        $oferta->delete();
+        // offer::destroy($oferta);
 
         return response()->json(['Oferta' => 'Oferta Eliminada'], 200);
     }
