@@ -27,7 +27,18 @@ class EnterpriseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required| max:100',
+            'address' => 'required| max:100',
+            'type' => 'required| max:100',
+            'logo' => 'required',
+            'own' => 'required| max:100',
+        ]);
+
+        enterprise::insert(['name'=>request()->name, 'address'=>request()->address, 'type'=>request()->type, 
+        'logo'=>request()->logo, 'own'=>request()->own]);
+
+        return response()->json(['Oferta' => 'Dato guardado'], 200);
     }
 
     /**
@@ -56,7 +67,7 @@ class EnterpriseController extends Controller
         $datosEmpresa = request()->except(['_token', '_method']);
         enterprise::where('id','=',$id)->update($datosEmpresa);
 
-        return response()->json(['Empresa' => 'Dato guardado'], 200);
+        return response()->json(['Empresa' => 'Empresa actualizada'], 200);
     }
 
     /**
@@ -65,8 +76,11 @@ class EnterpriseController extends Controller
      * @param  \App\enterprise  $enterprise
      * @return \Illuminate\Http\Response
      */
-    public function destroy(enterprise $enterprise)
+    public function destroy($id)
     {
-        //
+        $empresa = enterprise::where('id','=',$id);
+        enterprise::destroy($empresa);
+
+        return response()->json(['Empresa' => 'Empresa Eliminada'], 200);
     }
 }
