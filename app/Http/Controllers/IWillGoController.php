@@ -60,8 +60,12 @@ class IWillGoController extends Controller
      * @param  \App\iWillGo  $iWillGo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(iWillGo $iWillGo)
+    public function destroy($id)
     {
-        //
+        $ir = iWillGo::where('id',$id);
+        $ir->delete();
+        // offer::destroy($oferta);
+
+        return response()->json(['iwillGo' => 'Eliminado'], 200);
     }
 }
