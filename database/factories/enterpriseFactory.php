@@ -8,6 +8,9 @@ $factory->define(App\enterprise::class, function (Faker $faker) {
         'address' => $faker->sentence,
         'type' => $faker->name,
         'logo' => $faker->name,
+        'state' => $faker->name,
+        'city' => $faker->name,
+        'subtype' => $faker->name,
         'own'=> \App\User::all()->random()->id,
      ];
 });

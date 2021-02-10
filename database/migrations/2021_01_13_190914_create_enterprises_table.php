@@ -20,6 +20,9 @@ class CreateEnterprisesTable extends Migration
             $table->string('address');
             $table->string('type');
             $table->string('logo');
+            $table->string('state');
+            $table->string('city');
+            $table->string('subtype');
             $table->unsignedInteger('own');
             $table->foreign('own')->references('id')->on('users');
             $table->timestamp('created_at')->useCurrent();
