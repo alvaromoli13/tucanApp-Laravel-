@@ -83,4 +83,11 @@ class EnterpriseController extends Controller
 
         return response()->json(['Empresa' => 'Empresa Eliminada'], 200);
     }
+
+    public function typeEnterprise($type)
+    {
+        $enterprise['enterprise'] = enterprise::where('type', '=', $type)->with('ofertas')->paginate(10);
+        return response()->json(['Empresas' => $enterprise]);
+
+    }
 }

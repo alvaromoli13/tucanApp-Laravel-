@@ -12,7 +12,13 @@ class offer extends Model
         'id', 'name', 'description', 'start_date', 'finish_date', 'assessment', 'enterprise_id', 'music_direct', 'sport_event'
     ];
 
-    public function empresa(){
-        return $this->belongsTo(enterprise::class, 'enterprise_id');
+    public function Bar(){
+        return $this->belongsTo(enterprise::class, 'enterprise_id')->where('type', '=', 'Bar');
+    }
+    public function Restaurant(){
+        return $this->belongsTo(enterprise::class, 'enterprise_id')->where('type', '=', 'Restaurant');
+    }
+    public function Discotheque(){
+        return $this->belongsTo(enterprise::class, 'enterprise_id')->where('type', '=', 'Discotheque');
     }
 }

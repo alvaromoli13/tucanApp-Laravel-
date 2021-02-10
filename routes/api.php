@@ -25,7 +25,15 @@ Route::apiResource('iWillGos', 'IWillGoController');
 Route::post('api/register', 'API\RegisterController@register');
 Route::post('api/login', 'API\RegisterController@login');
 
+
+
 Route::middleware('auth:api', )->group( function () {
     Route::resource('offers', 'OfferController');
     Route::resource('enterprises', 'EnterpriseController');
     });
+
+Route::get('tipo/{type}', 'EnterpriseController@typeEnterprise');
+
+Route::get('OfertaBar', 'OfferController@ofertaConEmpresaBar');
+Route::get('OfertaDiscoteca', 'OfferController@ofertaConEmpresaDiscoteca');
+Route::get('OfertaRestaurante', 'OfferController@ofertaConEmpresaRestaurante');
