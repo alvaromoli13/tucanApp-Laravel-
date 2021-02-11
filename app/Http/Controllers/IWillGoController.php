@@ -14,7 +14,8 @@ class IWillGoController extends Controller
      */
     public function index()
     {
-        //
+        $ir = iWillGo::all();
+        return response()->json(['VoyAIr' => $ir->toArray()]);
     }
 
     
@@ -27,7 +28,14 @@ class IWillGoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'offer_id' => 'required',
+            'user_id' => 'required',
+        ]);
+
+        iWillGo::insert(['offer_id'=>request()->offer_id, 'user_id'=>request()->user_id]);
+
+        return response()->json(['iWillGo' => 'Dato guardado'], 200);
     }
 
     /**
@@ -36,9 +44,11 @@ class IWillGoController extends Controller
      * @param  \App\iWillGo  $iWillGo
      * @return \Illuminate\Http\Response
      */
-    public function show(iWillGo $iWillGo)
+    public function show($id)
     {
-        //
+        $ir = iWillGo::findOrFail($id);
+
+        return response()->json(['iWillGo' => $ir->toArray()]);
     }
 
 
@@ -49,9 +59,12 @@ class IWillGoController extends Controller
      * @param  \App\iWillGo  $iWillGo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, iWillGo $iWillGo)
+    public function update(Request $request, $id)
     {
-        //
+        $datosIr = request()->except(['_token', '_method']);
+        iWillGo::where('id','=',$id)->update($datosIr);
+
+        return response()->json(['VoyAIr' => 'Ir actualizado'], 200);
     }
 
     /**

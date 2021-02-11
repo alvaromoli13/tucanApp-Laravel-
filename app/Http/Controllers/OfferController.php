@@ -90,22 +90,22 @@ class OfferController extends Controller
 
     public function ofertaConEmpresaBar()
     {
-        $offer['offer'] = offer::where('id', '>', 0)->with('Bar')->paginate(10);
-        return response()->json(['Ofertas' => $offer]);
+        $offers = offer::where('id', '>', 0)->with('Bar')->get();
+        return response()->json(['Ofertas' => $offers]);
 
     }
 
     public function ofertaConEmpresaRestaurante()
     {
-        $offer['offer'] = offer::where('id', '>', 0)->with('Restaurant')->paginate(10);
-        return response()->json(['Ofertas' => $offer]);
+        $offers= offer::where('id', '>', 0)->with('Restaurant')->get();
+        return response()->json(['Ofertas' => $offers]);
 
     }
 
     public function ofertaConEmpresaDiscoteca()
     {
-        $offer['offer'] = offer::where('id', '>', 0)->with('Discotheque')->paginate(10);
-        return response()->json(['Ofertas' => $offer]);
+        $offers = offer::where('id', '>', 0)->with('Discotheque')->get();
+        return response()->json(['Ofertas' => $offers]);
 
     }
 

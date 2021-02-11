@@ -33,10 +33,13 @@ class EnterpriseController extends Controller
             'type' => 'required| max:100',
             'logo' => 'required',
             'own' => 'required| max:100',
+            'city' => 'required| max:100',
+            'state' => 'required| max:100',
+            'subtype' => 'required| max:100',
         ]);
 
         enterprise::insert(['name'=>request()->name, 'address'=>request()->address, 'type'=>request()->type, 
-        'logo'=>request()->logo, 'own'=>request()->own]);
+        'logo'=>request()->logo, 'own'=>request()->own, 'state'=>request()->state, 'city'=>request()->city, 'subtype'=>request()->subtype]);
 
         return response()->json(['Oferta' => 'Dato guardado'], 200);
     }
@@ -86,8 +89,8 @@ class EnterpriseController extends Controller
 
     public function typeEnterprise($type)
     {
-        $enterprise['enterprise'] = enterprise::where('type', '=', $type)->with('ofertas')->paginate(10);
-        return response()->json(['Empresas' => $enterprise]);
+        $enterprises = enterprise::where('type', '=', $type)->with('ofertas')->get();
+        return response()->json(['Empresas' => $enterprises]);
 
     }
 }
