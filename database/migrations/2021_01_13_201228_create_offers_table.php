@@ -19,7 +19,6 @@ class CreateOffersTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->date('start_date');
-            $table->date('finish_date');
             $table->time('start_time');
             $table->time('finish_time');
             $table->integer('assessment');
