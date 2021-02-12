@@ -52,7 +52,7 @@ class EnterpriseController extends Controller
      */
     public function show($id)
     {
-        $enterprise = enterprise::findOrFail($id);
+        $enterprise = enterprise::where('id', '=', $id)->with('ofertas')->get();
 
         return response()->json(['Empresa' => $enterprise->toArray()]);
     }

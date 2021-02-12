@@ -44,9 +44,11 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+        $user = User::where('id', '=', $id)->with('empresa')->get();
+
+        return response()->json(['Usuario' => $user->toArray()]);
     }
 
     /**

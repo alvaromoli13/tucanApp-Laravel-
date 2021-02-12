@@ -36,6 +36,7 @@ Route::middleware('auth:api', )->group( function () {
     Route::get('OfertaDiscoteca', 'OfferController@ofertaConEmpresaDiscoteca');
     Route::get('OfertaRestaurante', 'OfferController@ofertaConEmpresaRestaurante');
     Route::patch('users/{id}', 'UserController@update');
+    Route::get('users/{id}', 'UserController@show');
     });
 
 Route::get('tipo/{type}', 'EnterpriseController@typeEnterprise');
