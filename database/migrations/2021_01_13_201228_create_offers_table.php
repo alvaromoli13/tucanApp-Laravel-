@@ -20,6 +20,8 @@ class CreateOffersTable extends Migration
             $table->text('description');
             $table->date('start_date');
             $table->date('finish_date');
+            $table->time('start_time');
+            $table->time('finish_time');
             $table->integer('assessment');
             $table->unsignedInteger('enterprise_id');
             $table->foreign('enterprise_id')->references('id')->on('enterprises');

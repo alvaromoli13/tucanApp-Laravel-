@@ -36,6 +36,8 @@ class OfferController extends Controller
             'start_date' => 'required| max:100',
             'finish_date' => 'required| max:100',
             'finish_date' => 'required| max:100',
+            'start_time' => 'required| max:100',
+            'finish_time' => 'required| max:100',
             'music_direct' => 'required| max:100',
             'sport_direct' => 'required| max:100',
 
