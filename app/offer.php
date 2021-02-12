@@ -9,7 +9,7 @@ class offer extends Model
     protected $table = 'offers';
 
     protected $fillable = [
-        'id', 'name', 'description', 'start_date', 'finish_date', 'assessment', 'enterprise_id', 'music_direct', 'sport_event'
+        'id', 'name', 'description', 'start_date', 'finish_date', 'assessment', 'enterprise_id', 'music_direct', 'sport_direct'
     ];
 
     public function Bar(){

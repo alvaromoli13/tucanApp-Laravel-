@@ -35,10 +35,15 @@ class OfferController extends Controller
             'enterprise_id' => 'required| max:100',
             'start_date' => 'required| max:100',
             'finish_date' => 'required| max:100',
+            'finish_date' => 'required| max:100',
+            'music_direct' => 'required| max:100',
+            'sport_direct' => 'required| max:100',
+
         ]);
 
         offer::insert(['name'=>request()->name, 'description'=>request()->description, 'assessment'=>request()->assessment, 
-        'enterprise_id'=>request()->enterprise_id, 'start_date'=>request()->start_date, 'finish_date'=>request()->finish_date]);
+        'enterprise_id'=>request()->enterprise_id, 'start_date'=>request()->start_date, 'finish_date'=>request()->finish_date, 
+        'music_direct'=>request()->music_direct, 'sport_direct'=>request()->sport_direct]);
 
         return response()->json(['Oferta' => 'Dato guardado'], 200);
     }

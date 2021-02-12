@@ -27,14 +27,16 @@ Route::post('api/login', 'API\RegisterController@login');
 
 
 
+
 Route::middleware('auth:api', )->group( function () {
     Route::resource('offers', 'OfferController');
     Route::resource('enterprises', 'EnterpriseController');
     Route::resource('iWillGoes', 'IWillGoController');
+    Route::get('OfertaBar', 'OfferController@ofertaConEmpresaBar');
+    Route::get('OfertaDiscoteca', 'OfferController@ofertaConEmpresaDiscoteca');
+    Route::get('OfertaRestaurante', 'OfferController@ofertaConEmpresaRestaurante');
+    Route::patch('users/{id}', 'UserController@update');
     });
 
 Route::get('tipo/{type}', 'EnterpriseController@typeEnterprise');
 
-Route::get('OfertaBar', 'OfferController@ofertaConEmpresaBar');
-Route::get('OfertaDiscoteca', 'OfferController@ofertaConEmpresaDiscoteca');
-Route::get('OfertaRestaurante', 'OfferController@ofertaConEmpresaRestaurante');
