@@ -43,7 +43,7 @@ class OfferController extends Controller
 
         offer::insert(['name'=>request()->name, 'description'=>request()->description, 'assessment'=>request()->assessment, 
         'enterprise_id'=>request()->enterprise_id, 'start_date'=>request()->start_date, 'start_time'=>request()->start_time,
-        'finish_date'=>request()->finish_date,  
+        'finish_time'=>request()->finish_time,  
         'music_direct'=>request()->music_direct, 'sport_direct'=>request()->sport_direct]);
 
         return response()->json(['Oferta' => 'Dato guardado'], 200);
