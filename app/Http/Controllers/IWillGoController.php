@@ -15,7 +15,7 @@ class IWillGoController extends Controller
     public function index()
     {
         $ir = iWillGo::all();
-        return response()->json(['VoyAIr' => $ir->toArray()]);
+        return response()->json(['Ir' => $ir->toArray()]);
     }
 
     
@@ -48,7 +48,7 @@ class IWillGoController extends Controller
     {
         $ir = iWillGo::findOrFail($id);
 
-        return response()->json(['iWillGo' => $ir->toArray()]);
+        return response()->json(['Ir' => $ir->toArray()]);
     }
 
 
@@ -80,5 +80,11 @@ class IWillGoController extends Controller
         // offer::destroy($oferta);
 
         return response()->json(['iwillGo' => 'Eliminado'], 200);
+    }
+
+    public function personasInscritas($id)
+    {
+        $ir = iWillGo::where('offer_id', '=', $id);
+        return response()->json(['Ir' => $ir->toArray()]);
     }
 }
