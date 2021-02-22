@@ -31,6 +31,7 @@ Route::post('api/login', 'API\RegisterController@login');
 Route::middleware('auth:api', )->group( function () {
     Route::resource('offers', 'OfferController');
     Route::resource('enterprises', 'EnterpriseController');
+    Route::delete('eliminar/{idOffer}.{idUser}', 'IWillGoController@eliminar');
     Route::resource('iWillGoes', 'IWillGoController');
     Route::get('OfertaBar', 'OfferController@ofertaConEmpresaBar');
     Route::get('OfertaDiscoteca', 'OfferController@ofertaConEmpresaDiscoteca');
@@ -41,4 +42,5 @@ Route::middleware('auth:api', )->group( function () {
     });
 
 Route::get('tipo/{type}', 'EnterpriseController@typeEnterprise');
+
 
