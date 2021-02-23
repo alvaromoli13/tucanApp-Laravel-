@@ -84,8 +84,8 @@ class IWillGoController extends Controller
 
     public function personasInscritas($id)
     {
-        $ir = iWillGo::where('offer_id', '=', $id);
-        return response()->json(['Ir' => $ir->toArray()]);
+        $ir = iWillGo::where('offer_id', '=', $id)->get();
+        return response()->json(['Ir' => $ir]);
     }
 
     public function eliminar($idOffer, $idUser)
