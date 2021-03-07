@@ -115,4 +115,13 @@ class OfferController extends Controller
 
     }
 
+    public function filtros(Request $request)
+    {
+        $filtros = request()->except(['_token', '_method']);
+        // for($i = 0; $i<count($filtros); $i++){
+            
+        // }
+        return response()->json(['Filtros' => $filtros]);
+    }
+
 }
