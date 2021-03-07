@@ -21,4 +21,7 @@ class offer extends Model
     public function Discotheque(){
         return $this->belongsTo(enterprise::class, 'enterprise_id')->where('type', '=', 'Discotheque');
     }
+    public function Enterprise(){
+        return $this->belongsTo(enterprise::class, 'enterprise_id');
+    }
 }
