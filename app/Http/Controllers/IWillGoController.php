@@ -96,4 +96,9 @@ class IWillGoController extends Controller
         return response()->json(['iwillGo' => 'Eliminado'], 200);
     }
 
+    public function OfertasAsociadas($idUser){
+        $ir = iWillGo::where('user_id', '=', $idUser)->get();
+        return response()->json(['Ir' => $ir]);
+    }
+
 }
