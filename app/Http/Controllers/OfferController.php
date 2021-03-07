@@ -57,9 +57,9 @@ class OfferController extends Controller
      */
     public function show($id)
     {
-        $offer = offer::findOrFail($id);
+        $offer = offer::where('id', '=', $id)->with('Enterprise')->get();
 
-        return response()->json(['Oferta' => $offer->toArray()]);
+        return response()->json(['Oferta' => $offer]);
     }
 
     
@@ -123,5 +123,6 @@ class OfferController extends Controller
         // }
         return response()->json(['Filtros' => $filtros]);
     }
+
 
 }
