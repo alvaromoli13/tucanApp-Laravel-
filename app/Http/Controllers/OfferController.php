@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\offer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class OfferController extends Controller
 {
@@ -96,23 +97,32 @@ class OfferController extends Controller
 
     public function ofertaConEmpresaBar()
     {
-        $offers = offer::where('id', '>', 0)->with('Bar')->get();
-        return response()->json(['Ofertas' => $offers]);
-
+        $from = Carbon::now()->toDateString();
+        $to = Carbon::now()->addDay()->toDateString();
+        $time = Carbon::now()->toTimeString();
+        $offers = offer::whereBetween('start_date', [$from, $to])->with('Bar')->get();
+        // $offers = offer::where('id', '>', 0)->with('Bar')->get();
+        return response()->json(['Ofertas' => $offers, 'desde'=>$from, 'hasta'=>$to, 'hora'=>$time]);
     }
 
     public function ofertaConEmpresaRestaurante()
     {
-        $offers= offer::where('id', '>', 0)->with('Restaurant')->get();
+        $from = Carbon::now()->toDateString();
+        $to = Carbon::now()->addDay()->toDateString();
+        $time = Carbon::now()->toTimeString();
+        $offers = offer::whereBetween('start_date', [$from, $to])->with('Restaurant')->get();
+        // $offers= offer::where('id', '>', 0)->with('Restaurant')->get();
         return response()->json(['Ofertas' => $offers]);
-
     }
 
     public function ofertaConEmpresaDiscoteca()
     {
-        $offers = offer::where('id', '>', 0)->with('Discotheque')->get();
+        $from = Carbon::now()->toDateString();
+        $to = Carbon::now()->addDay()->toDateString();
+        $time = Carbon::now()->toTimeString();
+        $offers = offer::whereBetween('start_date', [$from, $to])->with('Discotheque')->get();
+        // $offers = offer::where('id', '>', 0)->with('Discotheque')->get();
         return response()->json(['Ofertas' => $offers]);
-
     }
 
     public function filtros(Request $request)

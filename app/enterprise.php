@@ -9,7 +9,7 @@ class enterprise extends Model
     protected $table = 'enterprises';
 
     protected $fillable = [
-        'id', 'name', 'address', 'type', 'logo', 'own', 'state', 'city', 'subtype'
+        'id', 'name', 'address', 'type', 'logo', 'own', 'state', 'city', 'subtype', 'latitud', 'longitud'
     ];
 
     public function ofertas()
@@ -20,6 +20,4 @@ class enterprise extends Model
     public function dueño(){
         return $this->belongsTo(User::class, 'own');
     }
-
-    
 }
