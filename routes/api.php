@@ -33,6 +33,7 @@ Route::middleware('auth:api', )->group( function () {
     Route::resource('enterprises', 'EnterpriseController');
     Route::delete('eliminar/{idOffer}.{idUser}', 'IWillGoController@eliminar');
     Route::resource('iWillGoes', 'IWillGoController');
+    Route::patch('valorar/{idOffer}.{idUser}', 'IWillGoController@update');
     Route::get('OfertaBar', 'OfferController@ofertaConEmpresaBar');
     Route::get('OfertaDiscoteca', 'OfferController@ofertaConEmpresaDiscoteca');
     Route::get('OfertaRestaurante', 'OfferController@ofertaConEmpresaRestaurante');

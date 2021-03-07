@@ -9,7 +9,7 @@ class iWillGo extends Model
     protected $table = 'i_will_gos';
 
     protected $fillable = [
-        'id', 'offer_id', 'user_id'
+        'id', 'offer_id', 'user_id', 'value'
     ];
 
     public function oferta(){

@@ -59,10 +59,10 @@ class IWillGoController extends Controller
      * @param  \App\iWillGo  $iWillGo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idOffer, $idUser)
     {
         $datosIr = request()->except(['_token', '_method']);
-        iWillGo::where('id','=',$id)->update($datosIr);
+        iWillGo::where('offer_id','=',$idOffer)->where('user_id', '=', $idUser)->update($datosIr);
 
         return response()->json(['VoyAIr' => 'Ir actualizado'], 200);
     }
