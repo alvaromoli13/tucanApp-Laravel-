@@ -97,7 +97,7 @@ class IWillGoController extends Controller
     }
 
     public function OfertasAsociadas($idUser){
-        $ir = iWillGo::where('user_id', '=', $idUser)->get();
+        $ir = iWillGo::where('user_id', '=', $idUser)->with(['oferta.Enterprise'])->get();
         return response()->json(['Ir' => $ir]);
     }
 
