@@ -36,10 +36,14 @@ class EnterpriseController extends Controller
             'city' => 'required| max:100',
             'state' => 'required| max:100',
             'subtype' => 'required| max:100',
+            'latitud' => 'required',
+            'longitud' => 'required'
         ]);
-
-        enterprise::insert(['name'=>request()->name, 'address'=>request()->address, 'type'=>request()->type, 
-        'logo'=>request()->logo, 'own'=>request()->own, 'state'=>request()->state, 'city'=>request()->city, 'subtype'=>request()->subtype]);
+        
+        $empresa = $request->all();
+        enterprise::create($empresa);
+        // enterprise::create(['name'=>$empresa->name, 'address'=>$empresa->address, 'type'=>$empresa->type, 
+        //  'logo'=>$empresa->logo, 'own'=>$empresa->own, 'state'=>$empresa->state, 'city'=>$empresa->city, 'subtype'=>$empresa->subtype]);
 
         return response()->json(['Oferta' => 'Dato guardado'], 200);
     }
