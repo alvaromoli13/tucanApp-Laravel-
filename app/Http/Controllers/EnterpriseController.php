@@ -35,7 +35,6 @@ class EnterpriseController extends Controller
             'own' => 'required| max:100',
             'city' => 'required| max:100',
             'state' => 'required| max:100',
-            'subtype' => 'required| max:100',
             'latitud' => 'required',
             'longitud' => 'required'
         ]);

@@ -102,7 +102,7 @@ class OfferController extends Controller
         $time = Carbon::now()->toTimeString();
         $offers = offer::whereBetween('start_date', [$from, $to])->with('Bar')->get();
         // $offers = offer::where('id', '>', 0)->with('Bar')->get();
-        return response()->json(['Ofertas' => $offers, 'desde'=>$from, 'hasta'=>$to, 'hora'=>$time]);
+        return response()->json(['Ofertas' => $offers]);
     }
 
     public function ofertaConEmpresaRestaurante()
