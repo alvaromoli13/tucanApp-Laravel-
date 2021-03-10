@@ -131,6 +131,14 @@ class OfferController extends Controller
         // for($i = 0; $i<count($filtros); $i++){
             
         // }
+
+        $from = Carbon::now()->toDateString();
+        $to = Carbon::now()->addDay()->toDateString();
+        $time = Carbon::now()->toTimeString();
+        $offers = offer::whereBetween('start_date', [$from, $to])->with('Restaurant')->get();
+        // $offers= offer::where('id', '>', 0)->with('Restaurant')->get();
+        // return response()->json(['Ofertas' => $offers]);
+        
         return response()->json(['Filtros' => $filtros]);
     }
 
